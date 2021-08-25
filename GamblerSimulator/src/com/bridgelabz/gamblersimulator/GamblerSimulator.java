@@ -49,7 +49,7 @@ public class GamblerSimulator {
 
 
 		}
-		
+		playNextMonth(totalAmount);
 
 	}
 	public static int gameResign(int availableBalance) 
@@ -98,5 +98,19 @@ public class GamblerSimulator {
 		return totalAmount;
 
 	}
+	public static void playNextMonth(int totalAmount) 
+	{
+
+		if( totalAmount >= (TOTAL_STAKE*30) )
+		{
+			System.out.print("Plays Next Month also");
+			gameForMonth();
+			
+		}
+		else
+			System.out.println("Does not play next month");
+
+	}
+
 		
 }
