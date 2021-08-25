@@ -18,19 +18,34 @@ public class GamblerSimulator {
 	}
 	public static boolean terminalCondition(int stake) {
 		if(stake > (INITIAL_STAKE/2) || stake < (INITIAL_STAKE+(INITIAL_STAKE/2)))
-			return true;
-		else
 			return false;
+		else
+			return true;
 	}
+	
 	public static void main(String[] args) {
 		System.out.println("Welcome to gambler simulator");
-		int stake = INITIAL_STAKE;
+		int stake = INITIAL_STAKE,numOfDays=20,totalAmount=0;
 		stake = playGame(stake);
-		boolean continueToPlay = terminalCondition(stake);
-		if(continueToPlay==true)
-			System.out.println("limit has reached for the day");
-		else
-			System.out.println("player can continue to play");
+		for (int day = 1; day <= numOfDays; day++) {
+			stake = INITIAL_STAKE;
+			boolean continueToPlay = terminalCondition(stake);
+			while(continueToPlay == true) {
+				double winProbability = Math.random();
+				if(winProbability < 0.5) {
+					System.out.println("Player has lost the bet");
+					stake=stake-1;
+				}
+				else {
+					System.out.println("Player has won the bet");
+					stake=stake+1;
+				}
+				System.out.println("current stake value is: "+stake);
+			}
+			totalAmount=totalAmount+stake;
+		}
+		System.out.println("stake at the end of 20 days: "+totalAmount);
+
 	}
 
 }
