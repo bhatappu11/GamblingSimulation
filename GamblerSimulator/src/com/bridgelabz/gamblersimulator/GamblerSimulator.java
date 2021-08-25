@@ -35,7 +35,7 @@ public class GamblerSimulator {
 		{
 			System.out.println();
 			System.out.print("Day "+day);
-			amountInADay=gameResign(TOTAL_STAKE);
+			amountInADay=terminalCondition(TOTAL_STAKE);
 			totalAmount+=amountInADay; 
 			if(amountInADay==TOTAL_STAKE+0.5*TOTAL_STAKE) 
 			{
@@ -51,7 +51,7 @@ public class GamblerSimulator {
 		
 
 	}
-	public static int gameResign(int availableBalance) 
+	public static int terminalCondition(int availableBalance) 
 	{
 		while(availableBalance<TOTAL_STAKE*1.5 && availableBalance>0.5*TOTAL_STAKE) 
 		{
@@ -68,7 +68,7 @@ public class GamblerSimulator {
 		int amountInOneDay=0;
 		for(int day=1; day<=noOfDays;day++) 
 		{
-			amountInOneDay=gameResign(TOTAL_STAKE);
+			amountInOneDay=terminalCondition(TOTAL_STAKE);
 			totalAmount+=amountInOneDay;
 		}
 		return totalAmount;
