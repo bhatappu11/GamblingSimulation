@@ -16,10 +16,21 @@ public class GamblerSimulator {
 		}
 			
 	}
+	public static boolean terminalCondition(int stake) {
+		if(stake > (INITIAL_STAKE/2) || stake < (INITIAL_STAKE+(INITIAL_STAKE/2)))
+			return true;
+		else
+			return false;
+	}
 	public static void main(String[] args) {
 		System.out.println("Welcome to gambler simulator");
 		int stake = INITIAL_STAKE;
-		playGame(stake);
+		stake = playGame(stake);
+		boolean continueToPlay = terminalCondition(stake);
+		if(continueToPlay==true)
+			System.out.println("limit has reached for the day");
+		else
+			System.out.println("player can continue to play");
 	}
 
 }
