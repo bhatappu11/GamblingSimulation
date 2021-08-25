@@ -1,8 +1,8 @@
 package com.bridgelabz.gamblersimulator;
 
 public class GamblerSimulator {
-	public static final int INITIAL_STAKE = 100;
-	public static final int BET_VALUE = 1;
+	public static final int TOTAL_STAKE = 100;
+	public static final int BET_PER_GAME = 1;
 	
 	public static int playGame(int stake) {
 		double winProbability = Math.random();
@@ -17,14 +17,14 @@ public class GamblerSimulator {
 			
 	}
 	public static boolean terminalCondition(int stake) {
-		if(stake > (INITIAL_STAKE/2) || stake < (INITIAL_STAKE+(INITIAL_STAKE/2)))
+		if(stake > (TOTAL_STAKE/2) || stake < (TOTAL_STAKE+(TOTAL_STAKE/2)))
 			return true;
 		else
 			return false;
 	}
 	public static void main(String[] args) {
 		System.out.println("Welcome to gambler simulator");
-		int stake = INITIAL_STAKE;
+		int stake = TOTAL_STAKE;
 		stake = playGame(stake);
 		boolean continueToPlay = terminalCondition(stake);
 		if(continueToPlay==true)
